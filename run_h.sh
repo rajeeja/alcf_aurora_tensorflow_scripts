@@ -39,6 +39,29 @@ PYTHON_SCRIPT="$SCRIPT_DIR/h.py"
 
 echo "Rank ${GLOBAL_RANK_ID}: Launching ${PYTHON_EXE} $PYTHON_SCRIPT --rank ${GLOBAL_RANK_ID} --gpu ${TARGET_GPU} --tile ${TARGET_TILE}"
 
+CONDA_ENV_NAME="new_env_name" # Name of your conda environment - this is made on top of frameworks/base to include required packages run in run_h.sh
+
+# --- Proxy Configuration ---
+# Set up proxy for ALCF
+# This is necessary for accessing external resources (e.g., git, conda) from ALCF
+
+export HTTP_PROXY=http://proxy.alcf.anl.gov:3128
+export HTTPS_PROXY=http://proxy.alcf.anl.gov:3128
+export http_proxy=http://proxy.alcf.anl.gov:3128
+export https_proxy=http://proxy.alcf.anl.gov:3128
+git config --global http.proxy http://proxy.alcf.anl.gov:3128
+module use /soft/modulefiles
+
+# --- Environment Setup ---
+echo "Setting up environment..."
+module load frameworks || { echo "Error: Failed to load 'frameworks' module."; exit 1; }
+# Add any other modules needed for GPU execution (e.g., level-zero, specific compilers) if not handled by frameworks/base env
+# module load <module_name>
+
+echo "Activating Conda env: ${CONDA_ENV_NAME}"
+conda activate "${CONDA_ENV_NAME}" || { echo "Error: Failed to activate Conda environment '${CONDA_ENV_NAME}'."; exit 1; }
+# --- End Environment Setup ---
+
 # Execute python, passing global rank, target gpu, and target tile as arguments
 # Any extra arguments ($@) received by run_h.sh are passed at the end
 # Here specify the actual script to run, args should guide the usage of GPUs for different tasks

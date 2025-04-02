@@ -11,7 +11,6 @@
 NRANKS_PER_NODE=12 # Run 12 ranks per node (1 per tile)
 NDEPTH=1         # CPU threads per rank (spacing). Adjust based on performance/binding needs.
 NTHREADS=1       # OMP_NUM_THREADS. Set to 1 if each rank uses only its tile resources.
-CONDA_ENV_NAME="new_env_name" # Name of your conda environment - this is made on top of frameworks/base to include required packages run in run_h.sh
 SCRIPT_DIR="/home/rjain/demo_tensorflow" # Directory containing run_h.sh and h.py
 # --- End Configuration ---
 
@@ -24,16 +23,6 @@ else
 fi
 NTOTRANKS=$(( NNODES * NRANKS_PER_NODE ))
 
-# --- Proxy Configuration ---
-# Set up proxy for ALCF
-# This is necessary for accessing external resources (e.g., git, conda) from ALCF
-
-export HTTP_PROXY=http://proxy.alcf.anl.gov:3128
-export HTTPS_PROXY=http://proxy.alcf.anl.gov:3128
-export http_proxy=http://proxy.alcf.anl.gov:3128
-export https_proxy=http://proxy.alcf.anl.gov:3128
-git config --global http.proxy http://proxy.alcf.anl.gov:3128
-module use /soft/modulefiles
 
 # --- Job Information ---
 echo "--------------------"
@@ -45,16 +34,6 @@ echo "Depth (Rank Spacing): ${NDEPTH}"
 echo "OMP_NUM_THREADS: ${NTHREADS}"
 echo "Target: 1 rank per GPU Tile"
 echo "--------------------"
-
-# --- Environment Setup ---
-echo "Setting up environment..."
-module load frameworks || { echo "Error: Failed to load 'frameworks' module."; exit 1; }
-# Add any other modules needed for GPU execution (e.g., level-zero, specific compilers) if not handled by frameworks/base env
-# module load <module_name>
-
-echo "Activating Conda env: ${CONDA_ENV_NAME}"
-conda activate "${CONDA_ENV_NAME}" || { echo "Error: Failed to activate Conda environment '${CONDA_ENV_NAME}'."; exit 1; }
-# --- End Environment Setup ---
 
 # Navigate to script directory
 cd "${SCRIPT_DIR}" || { echo "Error: Failed to cd to ${SCRIPT_DIR}."; exit 1; }
