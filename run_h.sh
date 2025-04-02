@@ -54,17 +54,12 @@ module use /soft/modulefiles
 # --- Environment Setup ---
 echo "Setting up environment..."
 module load frameworks || { echo "Error: Failed to load 'frameworks' module."; exit 1; }
-# Add any other modules needed for GPU execution (e.g., level-zero, specific compilers) if not handled by frameworks/base env
-# module load <module_name>
-
-echo "Activating Conda env: ${CONDA_ENV_NAME}"
-conda activate "${CONDA_ENV_NAME}" || { echo "Error: Failed to activate Conda environment '${CONDA_ENV_NAME}'."; exit 1; }
+source /home/rjain/venv/bin/activate || { echo "Error: Failed to activate virtual environment."; exit 1; }
 # --- End Environment Setup ---
 
 echo "Python version: $(python --version)"
 echo "Conda environment: $(conda info --envs | grep '*' | awk '{print $1}')"
 echo "Current working directory: $(pwd)"
-print python path
 echo "Python executable: $(which python)"
 
 PYTHON_EXE="$CONDA_PREFIX/bin/python"
