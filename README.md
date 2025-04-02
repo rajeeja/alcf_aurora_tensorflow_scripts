@@ -1,6 +1,6 @@
-# TensorFlow on ALCF Aurora
+# TensorFlow on ALCF Aurora (Dummy case to check setup)
 
-This directory contains scripts and instructions for running TensorFlow jobs on the ALCF Aurora supercomputer. It provides a streamlined workflow for setting up the environment, launching TensorFlow models, and submitting jobs to the Aurora queue. Note, the focus is to utilize one node and all GPU/tile available. Running multiple models in one node. This is specifically good for running HPOs and other such workflows.
+This directory contains scripts and instructions for running TensorFlow jobs on the ALCF Aurora supercomputer. It provides a streamlined workflow for setting up the environment, launching TensorFlow models, and submitting jobs to the Aurora queue. Note, the focus is to utilize one node and all GPU/tile available. Running multiple models in one node. This is specifically good for running HPOs and other such workflows. Used to run IMPROVE model UNO with different cancer/drug data - https://github.com/JDACS4C-IMPROVE/UNO/blob/develop/job_aurora.sh (Drug Blind Trials)
 
 ## Purpose
 

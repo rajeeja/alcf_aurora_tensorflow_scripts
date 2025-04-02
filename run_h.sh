@@ -41,6 +41,8 @@ echo "Rank ${GLOBAL_RANK_ID}: Launching ${PYTHON_EXE} $PYTHON_SCRIPT --rank ${GL
 
 # Execute python, passing global rank, target gpu, and target tile as arguments
 # Any extra arguments ($@) received by run_h.sh are passed at the end
+# Here specify the actual script to run, args should guide the usage of GPUs for different tasks
+# e.g., training, validation, etc.
 "$PYTHON_EXE" "$PYTHON_SCRIPT" \
     --rank "$GLOBAL_RANK_ID" \
     --gpu "$TARGET_GPU" \

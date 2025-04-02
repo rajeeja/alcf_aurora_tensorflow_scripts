@@ -11,7 +11,7 @@
 NRANKS_PER_NODE=12 # Run 12 ranks per node (1 per tile)
 NDEPTH=1         # CPU threads per rank (spacing). Adjust based on performance/binding needs.
 NTHREADS=1       # OMP_NUM_THREADS. Set to 1 if each rank uses only its tile resources.
-CONDA_ENV_NAME="new_env_name" # Name of your conda environment
+CONDA_ENV_NAME="new_env_name" # Name of your conda environment - this is made on top of frameworks/base to include required packages run in run_h.sh
 SCRIPT_DIR="/home/rjain/demo_tensorflow" # Directory containing run_h.sh and h.py
 # --- End Configuration ---
 
@@ -24,6 +24,19 @@ else
 fi
 NTOTRANKS=$(( NNODES * NRANKS_PER_NODE ))
 
+# --- Proxy Configuration ---
+# Set up proxy for ALCF
+# This is necessary for accessing external resources (e.g., git, conda) from ALCF
+
+export HTTP_PROXY=http://proxy.alcf.anl.gov:3128
+export HTTPS_PROXY=http://proxy.alcf.anl.gov:3128
+export http_proxy=http://proxy.alcf.anl.gov:3128
+export https_proxy=http://proxy.alcf.anl.gov:3128
+git config --global http.proxy http://proxy.alcf.anl.gov:3128
+module use /soft/modulefiles
+
+# --- Job Information ---
+echo "--------------------"
 echo "Job Details:"
 echo "Nodes: ${NNODES}"
 echo "Ranks per Node: ${NRANKS_PER_NODE}"
