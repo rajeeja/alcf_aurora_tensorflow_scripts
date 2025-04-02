@@ -1,6 +1,7 @@
 import argparse
 import os
 import time # Added for potential use later
+import tensorflow as tf
 
 def main():
     parser = argparse.ArgumentParser(description="Process rank, GPU, and Tile info.")
@@ -36,10 +37,12 @@ def main():
     # Write file named after rank
     try:
         with open(file_path, "w") as f:
+            tf_version = tf.__version__
             f.write(f"Hello from h.py\n")
             f.write(f"Global Rank: {args.rank}\n")
             f.write(f"Target GPU: {args.gpu}\n")
             f.write(f"Target Tile: {args.tile}\n")
+            f.write(f"TensorFlow version: {tf_version}\n")            
             # Add timestamp or other info if desired
             f.write(f"Timestamp: {time.time()}\n")
         print(f"  File written: {file_path}")
