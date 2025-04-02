@@ -34,7 +34,6 @@ echo "Rank ${GLOBAL_RANK_ID} (Local ${LOCAL_RANK_ID}): Calculated Target GPU=${T
 
 # --- Execute the Python Script ---
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-PYTHON_EXE="$CONDA_PREFIX/bin/python"
 PYTHON_SCRIPT="$SCRIPT_DIR/h.py"
 
 echo "Rank ${GLOBAL_RANK_ID}: Launching ${PYTHON_EXE} $PYTHON_SCRIPT --rank ${GLOBAL_RANK_ID} --gpu ${TARGET_GPU} --tile ${TARGET_TILE}"
@@ -49,7 +48,7 @@ export HTTP_PROXY=http://proxy.alcf.anl.gov:3128
 export HTTPS_PROXY=http://proxy.alcf.anl.gov:3128
 export http_proxy=http://proxy.alcf.anl.gov:3128
 export https_proxy=http://proxy.alcf.anl.gov:3128
-git config --global http.proxy http://proxy.alcf.anl.gov:3128
+# git config --global http.proxy http://proxy.alcf.anl.gov:3128
 module use /soft/modulefiles
 
 # --- Environment Setup ---
@@ -61,6 +60,14 @@ module load frameworks || { echo "Error: Failed to load 'frameworks' module."; e
 echo "Activating Conda env: ${CONDA_ENV_NAME}"
 conda activate "${CONDA_ENV_NAME}" || { echo "Error: Failed to activate Conda environment '${CONDA_ENV_NAME}'."; exit 1; }
 # --- End Environment Setup ---
+
+echo "Python version: $(python --version)"
+echo "Conda environment: $(conda info --envs | grep '*' | awk '{print $1}')"
+echo "Current working directory: $(pwd)"
+print python path
+echo "Python executable: $(which python)"
+
+PYTHON_EXE="$CONDA_PREFIX/bin/python"
 
 # Execute python, passing global rank, target gpu, and target tile as arguments
 # Any extra arguments ($@) received by run_h.sh are passed at the end
