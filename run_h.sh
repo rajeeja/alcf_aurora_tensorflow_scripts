@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # This script is executed by mpiexec for each rank.
 # Determines Global Rank, Local Rank, calculates Target GPU/Tile,
@@ -27,8 +27,8 @@ fi
 # Assuming 6 GPUs per node, 2 tiles per GPU, mapping local rank 0-11
 TARGET_GPU=$(( LOCAL_RANK_ID / 2 ))
 TARGET_TILE=$(( LOCAL_RANK_ID % 2 ))
-AFFINITY_MASK="${TARGET_GPU}.${TARGET_TILE}"
-export ZE_AFFINITY_MASK="${AFFINITY_MASK}" # Set for runtime/driver level affinity
+#AFFINITY_MASK="${TARGET_GPU}.${TARGET_TILE}"
+#export ZE_AFFINITY_MASK="${AFFINITY_MASK}" # Set for runtime/driver level affinity
 
 echo "Rank ${GLOBAL_RANK_ID} (Local ${LOCAL_RANK_ID}): Calculated Target GPU=${TARGET_GPU}, Tile=${TARGET_TILE}. Setting ZE_AFFINITY_MASK=${AFFINITY_MASK}"
 

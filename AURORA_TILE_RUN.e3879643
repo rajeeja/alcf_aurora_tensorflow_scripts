@@ -1,8 +1,0 @@
-
-Due to MODULEPATH changes, the following have been reloaded:
-  1) hwloc/master-git.1793e43-level-zero     2) mpich/opt/4.3.0rc3
-
-The following have been reloaded with a version change:
-  1) oneapi/eng-compiler/2024.07.30.002 => oneapi/release/2024.2.1
-  2) yaksa/0.3-aw2kkvy => yaksa/0.3-euoqglg
-

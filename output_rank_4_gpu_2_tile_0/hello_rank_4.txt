@@ -2,4 +2,5 @@ Hello from h.py
 Global Rank: 4
 Target GPU: 2
 Target Tile: 0
-Timestamp: 1743555097.2403605
+TensorFlow version: 2.15.1
+Timestamp: 1743627410.6667511
