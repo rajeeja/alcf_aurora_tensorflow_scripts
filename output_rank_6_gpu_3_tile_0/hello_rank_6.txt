@@ -1,0 +1,5 @@
+Hello from h.py
+Global Rank: 6
+Target GPU: 3
+Target Tile: 0
+Timestamp: 1743555097.2407703

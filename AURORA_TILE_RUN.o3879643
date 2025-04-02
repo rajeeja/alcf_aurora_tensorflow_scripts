@@ -1,0 +1,120 @@
+Job Details:
+Nodes: 1
+Ranks per Node: 12
+Total Ranks: 12
+Depth (Rank Spacing): 1
+OMP_NUM_THREADS: 1
+Target: 1 rank per GPU Tile
+--------------------
+Setting up environment...
+Activating Conda env: new_env_name
+Launching MPI job with 1 rank per GPU tile...
+Rank 5 (Local 5): Calculated Target GPU=2, Tile=1. Setting ZE_AFFINITY_MASK=2.1
+Rank 4 (Local 4): Calculated Target GPU=2, Tile=0. Setting ZE_AFFINITY_MASK=2.0
+Rank 2 (Local 2): Calculated Target GPU=1, Tile=0. Setting ZE_AFFINITY_MASK=1.0
+Rank 1 (Local 1): Calculated Target GPU=0, Tile=1. Setting ZE_AFFINITY_MASK=0.1
+Rank 6 (Local 6): Calculated Target GPU=3, Tile=0. Setting ZE_AFFINITY_MASK=3.0
+Rank 3 (Local 3): Calculated Target GPU=1, Tile=1. Setting ZE_AFFINITY_MASK=1.1
+Rank 0 (Local 0): Calculated Target GPU=0, Tile=0. Setting ZE_AFFINITY_MASK=0.0
+Rank 9 (Local 9): Calculated Target GPU=4, Tile=1. Setting ZE_AFFINITY_MASK=4.1
+Rank 4: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 4 --gpu 2 --tile 0
+Rank 8 (Local 8): Calculated Target GPU=4, Tile=0. Setting ZE_AFFINITY_MASK=4.0
+Rank 5: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 5 --gpu 2 --tile 1
+Rank 7 (Local 7): Calculated Target GPU=3, Tile=1. Setting ZE_AFFINITY_MASK=3.1
+Rank 11 (Local 11): Calculated Target GPU=5, Tile=1. Setting ZE_AFFINITY_MASK=5.1
+Rank 10 (Local 10): Calculated Target GPU=5, Tile=0. Setting ZE_AFFINITY_MASK=5.0
+Rank 2: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 2 --gpu 1 --tile 0
+Rank 1: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 1 --gpu 0 --tile 1
+Rank 6: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 6 --gpu 3 --tile 0
+Rank 3: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 3 --gpu 1 --tile 1
+Rank 0: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 0 --gpu 0 --tile 0
+Rank 9: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 9 --gpu 4 --tile 1
+Rank 7: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 7 --gpu 3 --tile 1
+Rank 8: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 8 --gpu 4 --tile 0
+Rank 11: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 11 --gpu 5 --tile 1
+Rank 10: Launching /home/rjain/.conda/envs/new_env_name/bin/python /home/rjain/demo_tensorflow/h.py --rank 10 --gpu 5 --tile 0
+h.py executing:
+  Global Rank: 11
+  Target GPU:  5
+  Target Tile: 1
+  File written: output_rank_11_gpu_5_tile_1/hello_rank_11.txt
+h.py rank 11 finished.
+h.py executing:
+  Global Rank: 1
+  Target GPU:  0
+  Target Tile: 1
+  File written: output_rank_1_gpu_0_tile_1/hello_rank_1.txt
+h.py rank 1 finished.
+h.py executing:
+  Global Rank: 8
+  Target GPU:  4
+  Target Tile: 0
+  File written: output_rank_8_gpu_4_tile_0/hello_rank_8.txt
+h.py rank 8 finished.
+h.py executing:
+  Global Rank: 10
+  Target GPU:  5
+  Target Tile: 0
+  File written: output_rank_10_gpu_5_tile_0/hello_rank_10.txt
+h.py rank 10 finished.
+h.py executing:
+  Global Rank: 9
+  Target GPU:  4
+  Target Tile: 1
+  File written: output_rank_9_gpu_4_tile_1/hello_rank_9.txt
+h.py rank 9 finished.
+h.py executing:
+  Global Rank: 0
+  Target GPU:  0
+  Target Tile: 0
+  File written: output_rank_0_gpu_0_tile_0/hello_rank_0.txt
+h.py rank 0 finished.
+h.py executing:
+  Global Rank: 4
+  Target GPU:  2
+  Target Tile: 0
+  File written: output_rank_4_gpu_2_tile_0/hello_rank_4.txt
+h.py rank 4 finished.
+h.py executing:
+  Global Rank: 5
+  Target GPU:  2
+  Target Tile: 1
+  File written: output_rank_5_gpu_2_tile_1/hello_rank_5.txt
+h.py rank 5 finished.
+h.py executing:
+  Global Rank: 2
+  Target GPU:  1
+  Target Tile: 0
+  File written: output_rank_2_gpu_1_tile_0/hello_rank_2.txt
+h.py rank 2 finished.
+h.py executing:
+  Global Rank: 3
+  Target GPU:  1
+  Target Tile: 1
+  File written: output_rank_3_gpu_1_tile_1/hello_rank_3.txt
+h.py rank 3 finished.
+h.py executing:
+  Global Rank: 7
+  Target GPU:  3
+  Target Tile: 1
+  File written: output_rank_7_gpu_3_tile_1/hello_rank_7.txt
+h.py rank 7 finished.
+h.py executing:
+  Global Rank: 6
+  Target GPU:  3
+  Target Tile: 0
+  File written: output_rank_6_gpu_3_tile_0/hello_rank_6.txt
+h.py rank 6 finished.
+Rank 8: Python script finished with exit code 0
+Rank 7: Python script finished with exit code 0
+Rank 6: Python script finished with exit code 0
+Rank 10: Python script finished with exit code 0
+Rank 1: Python script finished with exit code 0
+Rank 9: Python script finished with exit code 0
+Rank 0: Python script finished with exit code 0
+Rank 3: Python script finished with exit code 0
+Rank 4: Python script finished with exit code 0
+Rank 5: Python script finished with exit code 0
+Rank 11: Python script finished with exit code 0
+Rank 2: Python script finished with exit code 0
+mpiexec finished with exit code: 0
